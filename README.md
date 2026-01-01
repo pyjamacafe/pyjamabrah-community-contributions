@@ -94,4 +94,4 @@ Besides the instructions above, you can use the [markdown syntax highlighted her
 
 ## Contact us
 
-Need more help/guidance? Reach us on [support@pyjamabrah.com](mailto:support@pyjamabrah.com)
+Need more help/guidance? Reach us on [support@pyjamacafe.com](mailto:support@pyjamacafe.com)

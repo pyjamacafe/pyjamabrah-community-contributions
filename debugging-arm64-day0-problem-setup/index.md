@@ -229,7 +229,7 @@ Once we have verified on the field that it actually works, we can then think of 
 Why don't you try to think of a better way to resolve this? Ideally, we would want **Thread 2** to always read the value and print it no matter when it executes. Think on how can we achieve this?
 **Hint**: Think of adding some synchronization primitives.
 
-If you have a solution (may be this or something unique entirely), I would love to hear from you. You can reach out to us at support@pyjamabrah.com
+If you have a solution (may be this or something unique entirely), I would love to hear from you. You can reach out to us at [support@pyjamacafe.com](mailto:support@pyjamacafe.com)
 
 Now that we have looked at a general flow of debugging, in the next ones, we will now introduce different tools we have in our arsenal which will aid a lot in our debugging and detective journey.
 
