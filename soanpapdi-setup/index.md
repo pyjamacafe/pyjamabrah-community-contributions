@@ -1,10 +1,12 @@
 ---
 date: "2026-01-08T17:48:22+05:30"
 title: 'Soan Papdi FPGA - Setup Guide'
-thumbnail: "/posts/soanpapdi-setup/sp.jpeg"
+thumbnail: "/soanpapdi/sp.jpeg"
 
-url: soanpapdi
-
+url: /posts/soanpapdi-setup
+alias:
+  - /soanpapdi
+  - /sp
 tags:
   - "soanpapdi"
 
