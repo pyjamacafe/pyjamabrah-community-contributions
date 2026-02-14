@@ -15,7 +15,7 @@ series:
   - "basics"
 ---
 
-![](/posts/soanpapdi-setup/sp.jpeg "A Quick Guide to getting up and running with the Soan Papdi FPGA board.")
+![](/soanpapdi/sp.jpeg "A Quick Guide to getting up and running with the Soan Papdi FPGA board.")
 
 A quick guide to getting up and running with the Soan Papsi FPGA board.
 
