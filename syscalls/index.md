@@ -112,7 +112,7 @@ $ ld -o main main.o
 And then execute the final binary to see how the operating system responds. You should see something like below :)
 
 ```shell
-$ ./hello
+$ ./main
 `write` system call printed this!
 $
 ```
