@@ -4,9 +4,11 @@ title: 'Soan Papdi FPGA - Setup Guide'
 thumbnail: "/posts/soanpapdi-setup/sp.jpeg"
 
 url: /posts/soanpapdi-setup
-alias:
-  - /soanpapdi
-  - /sp
+
+aliases:
+- /soanpapdi/
+- /sp/
+
 tags:
   - "soanpapdi"
 
