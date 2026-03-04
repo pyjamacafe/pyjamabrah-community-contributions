@@ -5,10 +5,6 @@ thumbnail: "/posts/soanpapdi-setup/sp.jpeg"
 
 url: /posts/soanpapdi-setup
 
-aliases:
-- /soanpapdi/
-- /sp/
-
 tags:
   - "soanpapdi"
 
