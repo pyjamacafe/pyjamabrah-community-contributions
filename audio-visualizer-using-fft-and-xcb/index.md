@@ -61,21 +61,21 @@ To make it faster, we use the Fast Fourier Transform (FFT).
 In FFT, we divide sample data points into even and odd parts.
 This gives us:
 $$
-\underbrace{\sum_{n=0}^{N/2-1} x[2n] \cdot e^{\frac{-j2\pi kn}{N/2}}}_{even} + \underbrace{\sum_{n=0}^{N/2-1} x[2n+1] \cdot e^{\frac{-j2\pi k(n+1)}{N/2}}}_{odd} 
+\underbrace{\sum_{n=0}^{N/2-1} x[2n] \cdot e^{\frac{-j2\pi kn}{N/2}}}_{even} + \underbrace{\sum_{n=0}^{N/2-1} x[2n+1] \cdot e^{\frac{-j2\pi k(n+1)}{N/2}}}_{odd}
 $$
 
 Now, if we normalize the odd part of the equation, we get:
 $$
 \underbrace{\sum_{n=0}^{N/2-1} x[2n] \cdot e^{\frac{-j2\pi kn}{N/2}}}_{even}
 +
-e^{\frac{-j2\pi k}{N}} \cdot \underbrace{\sum_{n=0}^{N/2-1} x[2n+1] \cdot \ e^{\frac{-j2\pi k n}{N/2}}}_{odd} 
+e^{\frac{-j2\pi k}{N}} \cdot \underbrace{\sum_{n=0}^{N/2-1} x[2n+1] \cdot \ e^{\frac{-j2\pi k n}{N/2}}}_{odd}
 $$
 
 If we further simplify this equation and take out the summation and exponential terms, we are left with:
 $$
-e^{\frac{-j2\pi kn}{N/2}} \cdot \sum_{n=0}^{N/2-1} 
+e^{\frac{-j2\pi kn}{N/2}} \cdot \sum_{n=0}^{N/2-1}
 \left[
-x[2n] + e^{\frac{-j2\pi k}{N}} \cdot x[2n+1] 
+x[2n] + e^{\frac{-j2\pi k}{N}} \cdot x[2n+1]
 \right]
 $$
 
@@ -88,13 +88,13 @@ This can compute frequency bins from $0 \ to \ \frac{n}{2}-1$.
 
 For $\frac{N}{2} \ to \ N$, we can exploit periodicity of the complex exponential.
 
-This --- $e^{\frac{-j2\pi kn}{N}}$ is actually our twiddle factor, if we go from $0 \ to \ N$. But if we go from $N \ to \ 0$, we can write it like this --- $e^{\frac{-j2\pi k(N-n)}{N}}$ 
+This --- $e^{\frac{-j2\pi kn}{N}}$ is actually our twiddle factor, if we go from $0 \ to \ N$. But if we go from $N \ to \ 0$, we can write it like this --- $e^{\frac{-j2\pi k(N-n)}{N}}$
 
 Lets normalize this reverse twiddle factor:
 $$
 e^{\frac{-j2\pi kN}{N}} \cdot e^{\frac{-j2\pi k \cdot -n}{N}} \\
 e^{-j2\pi k} \cdot e^{\frac{-j2\pi k \cdot -n}{N}} \\
-1 \cdot e^{\frac{-j2\pi k\cdot-n}{N}} 
+1 \cdot e^{\frac{-j2\pi k\cdot-n}{N}}
 $$
 
 If we look carefully, after normalizing the equation, what we get is just the conjugate of our twiddle factor:
@@ -126,7 +126,7 @@ void _fft(double complex *x, unsigned int N, double complex *result){
     }
 }
 ```
-1. `double complex *x` - pointer to dynamically allocated memory that stores the sampled data points. 
+1. `double complex *x` - pointer to dynamically allocated memory that stores the sampled data points.
 1. `unsigned int N` - represents the total number of samples in x.
 1. `double complex *result` - pointer to dynamically allocated memory that stores the computed frequency bins.
 
@@ -143,7 +143,7 @@ for (unsigned int i = 0; i < N / 2; i++) {
 	sub_odd[i] = x[2 * i + 1];
 }
 
-// Allocating memory blocks to store result for sub_even and sub_odd parts. 
+// Allocating memory blocks to store result for sub_even and sub_odd parts.
 double complex *even = (double complex *)malloc(sizeof(double complex) * (N / 2));
 double complex *odd = (double complex *)malloc(sizeof(double complex) * (N / 2));
 
@@ -165,7 +165,7 @@ for (unsigned int k = 0; k < N / 2; k++) {
 	result[k + N / 2] = even[k] - twiddle;
 }
 ```
-1. `tiwddle` - The twiddle factor mentioned in the mathematical section. 
+1. `tiwddle` - The twiddle factor mentioned in the mathematical section.
 1. `result[k]` - Stores the lower half of the frequency bins.
 1. `result[k+ N/2]` - Stores the upper half of the frequency bins, which are the conjugates of the lower half.
 
@@ -222,14 +222,14 @@ void _fft(double complex *x, unsigned int N, double complex *result) {
 }
 ```
 
-Now we can call our FFT function like this: 
+Now we can call our FFT function like this:
 ```C
 // Size of result is equal to number of elements we have in our input sample data.
 double complex *result = (double complex *)malloc(sizeof(double complex) * N);
 _fft(x, N, result);
 ```
 
-## XCB 
+## XCB
 XCB (X C Binding) is an API for communicating with the X server on Linux. It is used to draw graphics, create windows, handle events, and do other GUI stuff directly from C programs. XCB is faster and more lightweight than the older Xlib library, and it gives more control over how you interact with the X server.
 
 We use the XCB API to create a window on Linux where we can draw the visual representation of audio frequencies in real time.
@@ -238,7 +238,7 @@ We use the XCB API to create a window on Linux where we can draw the visual repr
 A Pixmap in XCB is like an off-screen image or a canvas where you can draw graphics before showing them on the window. You can draw pixels, lines, or shapes on a pixmap and then copy it to the window. This is useful for reducing flickering and making smooth graphics, because you prepare everything in the pixmap first and then display it at once.
 A pixmap works like a grid where each cell represents a pixel. Each pixel stores RGB values, so by changing the color of each cell, we can draw images or graphics on the pixmap before showing it on the window.
 Pixmap uses buffer of type `uint8_t` which stores each pixel. Size of buffer is dependent on width and height of canvas we want to display.
-For example resolution of our canvas is 600x600. Width is 600 and height is 600. 
+For example resolution of our canvas is 600x600. Width is 600 and height is 600.
 - Then bytes per row will be $600 * (bpp / 8)$
     - bpp is bits per pixel, which means how many bits required to show single pixel. Normaly it is 1 bit for Monochrome bitmap, 8 bits for Grayscale bitmap, 24 bits for color bitmap and 32 bits for color bitmap with alpha (transparency). In our case it is 24.
 - Total bytes (size of buffer) will be bytes per row times height, which is $1800 * 600 = 1080000$
@@ -253,7 +253,7 @@ offset = bytes_per_pixel * x + bytes_per_row * y
 ## Parsing WAV File
 A WAV file is a type of audio file that stores sound in an uncompressed format. It contains raw audio data, usually in PCM (Pulse Code Modulation), along with some headers that tell the computer about sample rate, number of channels, and bit depth. Since it’s uncompressed, WAV files are large but give exact audio quality without any loss.
 
-I implmented my own WAV parsing logic, you can find it in my github repo or you can learn about WAV files and PCM [here](https://pyjamabrah.com/posts/pcm/).
+I implmented my own WAV parsing logic, you can find it in my github repo or you can learn about WAV files and PCM [here](https://pyjamacafe.com/posts/pcm/).
 
 ## Coding Audio Visualizer
 
@@ -262,7 +262,7 @@ Whole code is splitted into different sections for better understanding.
 ### Headers to include.
 ```C
 #include <alsa/asoundlib.h>     // Library to play audio in Linux system using C
-#include <xcb/xcb.h>            // XCB API library for GUI 
+#include <xcb/xcb.h>            // XCB API library for GUI
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
@@ -293,13 +293,13 @@ static const uint16_t gap = 2;
 static const uint32_t interval = 23;  // Milliseconds
 
 // Device to use to play audio.
-static const char *device = "default"; 
+static const char *device = "default";
 
 // GIF image threshold
 static const uint8_t gray_threshold = 100;
 static const uint8_t invert_image = 0x00;
 
-// Used for parallely computing frequencies and displaying on window. 
+// Used for parallely computing frequencies and displaying on window.
 atomic_int worker_thread_running = 1;
 atomic_int need_pixmap_update = 0;
 
@@ -313,7 +313,7 @@ Pixmap Struct - Used for storing information about Pixmap.
 typedef struct {
 	uint8_t bpp;                // Bits per pixel
 	uint8_t *buffer;            // Buffer to store pixel data
-	uint8_t bytes_per_pixel;    // 
+	uint8_t bytes_per_pixel;    //
 	uint32_t bytes_per_row;     //
 	uint32_t total_bytes;       // Total size of buffer in bytes
 } Pixmap;
@@ -331,7 +331,7 @@ typedef struct {
 GIF Struct - Used for storing GIF information.
 ```C
 typedef struct {
-	int W;                      // WIDTH of GIF image 
+	int W;                      // WIDTH of GIF image
 	int H;                      // HEIGHT of GIF image
 	int frames;                 // Number of frames in GIF
 	int comp;                   // Number of Components in GIF (3 for RGB).
@@ -343,8 +343,8 @@ typedef struct {
 Argument Struct - Used for passing arguments to worker thread.
 ```C
 typedef struct {
-	uint16_t *mono_buffer;     
-	Pixmap *pixmap;             
+	uint16_t *mono_buffer;
+	Pixmap *pixmap;
 	Bar *bar;
 	WAV *wav;
 	GIF *gif;
@@ -377,7 +377,7 @@ int load_gif(const char *filename, GIF *gif) {
 	int z = 0;
 	int comp = 0;
 	int *delay = 0;
-    
+
     // This will load all variables defined above and fill buffer with GIF pixel data
 	uint8_t *buffer = stbi__load_gif_main(&s, &delay, &x, &y, &z, &comp, 4);
 
@@ -395,7 +395,7 @@ int load_gif(const char *filename, GIF *gif) {
 		    "Height'");
 		return 0;
 	}
-    
+
     // Intializing GIF struct
 	gif->W = x;
 	gif->H = y;
@@ -405,8 +405,8 @@ int load_gif(const char *filename, GIF *gif) {
 	gif->buffer = (uint8_t *)malloc(sizeof(uint8_t) * total_bytes);
 
 	if (gif->buffer == NULL) return 0;
-    
-    // Copying GIF pixel data to struct 
+
+    // Copying GIF pixel data to struct
 	memcpy(gif->buffer, buffer, total_bytes);
 
 	free(buffer);
@@ -441,7 +441,7 @@ void draw_image(Pixmap *pixmap, GIF *gif, uint8_t frame) {
 			if ((x >= start_x && x < (gif->W + start_x)) &&
 			    (y >= start_y && y < (gif->H + start_y))) {
 
-                // Position of pixel inside GIF image buffer 
+                // Position of pixel inside GIF image buffer
 				uint32_t gif_offset = (x - start_x) * gif->comp +
 				                      (y - start_y) * gif->W * gif->comp;
 
@@ -501,7 +501,7 @@ void create_bar(Pixmap *pixmap, uint16_t start, uint16_t width, uint16_t length,
 	G = G | (color >> 8);
 	R = R | color;
 
-    // Drawing vertical bar on pixmap 
+    // Drawing vertical bar on pixmap
 	for (uint16_t y = HEIGHT - length; y < HEIGHT; y++) {
 		for (uint16_t x = start; x <= start + width; x++) {
 			uint32_t offset =
@@ -520,7 +520,7 @@ This function extract frequencies from mono audio sameple and smooths it.
 ```C
 uint64_t *get_bands(WAV *wav, uint16_t *buffer, uint32_t total_frames,
                     uint32_t offset) {
-    // Samples to take for FFT 
+    // Samples to take for FFT
 	uint32_t sample_size = 1024;
     // Frequency bin group size for averaging
 	uint16_t smooth_factor = 12;
@@ -529,17 +529,17 @@ uint64_t *get_bands(WAV *wav, uint16_t *buffer, uint32_t total_frames,
 	    (double complex *)malloc(sizeof(*samples) * sample_size);
 
 	if (samples == NULL) return NULL;
-    
+
 	for (uint32_t i = 0; i < total_frames && i < sample_size; i++)
 		samples[i] = (double complex)buffer[offset + i];
-    
+
     // If we are short of sample data, them make remaning samples 0
 	for (uint32_t i = total_frames; i < sample_size; i++) samples[i] = 0;
-   
+
 	double complex *bin = fft(samples, sample_size);
 
 	if (bin == NULL) return NULL;
-    
+
     // Output is half the sample size since frequencies above N/2 are conjugates of the lower half
 	uint64_t *output =
 	    (uint64_t *)malloc(sizeof(*output) * (sample_size / 2 / smooth_factor));
@@ -576,7 +576,7 @@ uint64_t *get_bands(WAV *wav, uint16_t *buffer, uint32_t total_frames,
 ```
 
 ### Updating Pixmap
-This will update Pixmap for every GIF frame and Audio bars. 
+This will update Pixmap for every GIF frame and Audio bars.
 ```C
 void *update_pixmap(void *arg) {
 	Arg_Struct *arg_struct = (Arg_Struct *)arg;
@@ -592,7 +592,7 @@ void *update_pixmap(void *arg) {
 		if (atomic_load(&need_pixmap_update) > 0) {
             // Draw one frame of GIF image
 			draw_image(arg_struct->pixmap, arg_struct->gif, i);
-            
+
             // Checking interval between each frame in GIF image
 			uint64_t end = get_milis();
 			if (end - start > (arg_struct->gif)->delay) {
@@ -643,7 +643,7 @@ Loading the WAV audio and GIF image into the memory
 	if (load_wav(argv[1], &wav) == 0) return 0;
 
 	uint16_t *mono_buffer = NULL;
-    
+
     // Converting stereo audio PCM into mono
 	if (get_mono_samples(&wav, &mono_buffer) == 0) return 0;
 
@@ -714,13 +714,13 @@ Initializing ALSA Sound for audio playback.
 	int err;
 	snd_pcm_t *handle;
 	snd_pcm_sframes_t frames;
-    
+
     // Opening default device for audio playback
 	if ((err = snd_pcm_open(&handle, device, SND_PCM_STREAM_PLAYBACK, 0)) < 0) {
 		printf("Playback open error: %s\n", snd_strerror(err));
 		exit(EXIT_FAILURE);
 	}
-    
+
     // Configuring device for type PCM we are going to use
 	if ((err = snd_pcm_set_params(
 	         handle, SND_PCM_FORMAT_S16_LE, SND_PCM_ACCESS_RW_INTERLEAVED,
@@ -740,7 +740,7 @@ Calculating audio frames for ALSA sound and FFT.
 1. If audio is stereo then it will have 2 channels left and right. Each channel will be of 2 bytes. Here a frame is group of 2 channels (left +  right).
 2. A frame will be of 4 bytes.
 3. `audio_frames_in_time` is amount of frames we will have in `interval`, which is 23 miliseconds. This is for syncing audio with visualization.
-4. `offset` is to determine on what frame group we are currently. 
+4. `offset` is to determine on what frame group we are currently.
 
 Running worker thread
 ```C
@@ -758,14 +758,14 @@ Running worker thread
 
 Starting GUI loop
 ```C
-    // if 1, loop will end and program will exit  
+    // if 1, loop will end and program will exit
 	int quit = 0;
 	while (!quit) {
         // This will poll for any button or mouse event
 		xcb_generic_event_t *event = xcb_poll_for_event(conn);
 
 		if (event) {
-            // 0x80 mask is to determine if event is explicit and not by server 
+            // 0x80 mask is to determine if event is explicit and not by server
 			switch (event->response_type & ~0x80) {
 				case XCB_EXPOSE:
                     // if Window is open, then show pixmap
@@ -786,26 +786,26 @@ Handling audio and bar visualization
 ```C
         // Set flag to indicate worker thread that we need pixmap update
 		atomic_store(&need_pixmap_update, 1);
-        
+
         // Play audio using alsa sound
 		frames = snd_pcm_writei(handle, wav.buffer + offset * wav.frame_size,
 		                        audio_frames_in_time);
 		if (frames < 0) frames = snd_pcm_recover(handle, frames, 0);
-        
-        // Move to next frame group 
+
+        // Move to next frame group
 		offset = offset + audio_frames_in_time;
-        
+
         // If out of frames, then exit loop
 		if (offset > total_audio_frames) quit = 1;
-        
-        // If no flag is set by worker thread, it means it is still updating pixmap. 
+
+        // If no flag is set by worker thread, it means it is still updating pixmap.
 		if (atomic_load(&need_pixmap_update) == 1) continue;
-        
+
         // Copies pixel data from buffer to pixmap
 		xcb_put_image(conn, XCB_IMAGE_FORMAT_Z_PIXMAP, pixmap, gc, WIDTH,
 		              HEIGHT, 0, 0, 0, screen->root_depth, pix.total_bytes,
 		              pix.buffer);
-        // Copiex pixel data from pixmap to GContext 
+        // Copiex pixel data from pixmap to GContext
 		xcb_copy_area(conn, pixmap, window, gc, 0, 0, 0, 0, WIDTH, HEIGHT);
         // Send request to X11 server
 		xcb_flush(conn);

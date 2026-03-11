@@ -23,13 +23,13 @@ Let's now actually understand the need and usage of GDB, OpenOCD, JTAG, SWD, etc
 
 <!--more-->
 
-Alright, now that we know what the [general flow and pattern of debugging looks like](https://pyjamabrah.com/posts/debugging-arm64-day0-problem-setup/), let's now see what all different tools we have in our arsenal.
+Alright, now that we know what the [general flow and pattern of debugging looks like](https://pyjamacafe.com/posts/debugging-arm64-day0-problem-setup/), let's now see what all different tools we have in our arsenal.
 
 ## GDB: The High-level Interrogator
 
 ### What is GDB?
 
-Continuing and building on our analogy from the [previous article](https://pyjamabrah.com/posts/debugging-arm64-day0-problem-setup/), GDB is like the lead detective who asks pointed questions to uncover what’s happening inside the suspect (your code). This is primarily done to gather more clues and evidences.
+Continuing and building on our analogy from the [previous article](https://pyjamacafe.com/posts/debugging-arm64-day0-problem-setup/), GDB is like the lead detective who asks pointed questions to uncover what’s happening inside the suspect (your code). This is primarily done to gather more clues and evidences.
 
 GDB (GNU Debugger), is a powerful, open-source debugger that lets us interact with a running program (if you're debugging a process on a self-hosted environment).
 While debugging an embedded system, GDB allows developers to analyze and troubleshoot firmware or any bare-metal code directly on their target hardware by controlling program execution, inspecting memory and register values, and analyzing runtime behaviors. Throughout this series we will cover how that is achieved.

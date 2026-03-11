@@ -1,10 +1,10 @@
 # About this repository
 
-This repository is a collection of posts that reflect as blog posts and article on [pyjamabrah.com](https://pyjamabrah.com).
+This repository is a collection of posts that reflect as blog posts and article on [pyjamacafe.com](https://pyjamacafe.com).
 
 # How to Contribute?
 
-You can contribute technical writings to [pyjamabrah.com](https://pyjamabrah.com) by -
+You can contribute technical writings to [pyjamacafe.com](https://pyjamacafe.com) by -
 1. adding a directory to this repository and then within that add a `index.md`
 1. The `index.md` is where you will write your article.
 1. Raise a pull request once your article is ready for review.

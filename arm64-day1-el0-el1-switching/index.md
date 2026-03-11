@@ -26,7 +26,7 @@ Hello There!
 
 Let's continue on our journey of understanding a mammoth that is the ARM64 architecture.
 
-In the [Previous article](https://pyjamabrah.com/posts/arm64-exception-levels/), we went through different exception levels. Would encourage perusing through it once in case you'd want to jog your memories. In this one, we would together want to attempt to deep dive into switching between two of the exception levels - `EL0` and `EL1`.
+In the [Previous article](https://pyjamacafe.com/posts/arm64-exception-levels/), we went through different exception levels. Would encourage perusing through it once in case you'd want to jog your memories. In this one, we would together want to attempt to deep dive into switching between two of the exception levels - `EL0` and `EL1`.
 
 We'll walk through the process of a system call from EL0 to EL1 and the return journey, focusing on context switching, the vector table, synchronous exception handling, and key registers like `ESR_EL1` and `ELR_EL1`. We will explore from the lens of code snippets to see how implementation might look in action. Finally, we will piece together the snippets to arrive at full switching flow.
 

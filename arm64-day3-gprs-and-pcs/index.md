@@ -24,7 +24,7 @@ ABI and Procedure call standard are backbone to safe-guard compatibility and int
 
 ## What Are General-Purpose Registers?
 
-Previous articles, we have solely dedicated ourselves in the study of [exception levels](https://pyjamabrah.com/posts/arm64-exception-levels/) and [interrupt handling](https://pyjamabrah.com/posts/arm64-irq-handling/).
+Previous articles, we have solely dedicated ourselves in the study of [exception levels](https://pyjamacafe.com/posts/arm64-exception-levels/) and [interrupt handling](https://pyjamacafe.com/posts/arm64-irq-handling/).
 
 Let's now dive into nuances of what the core has to offer and the so-called contract or interface between high level software and mostly external but low level code/libraries. We as developers often don't have to deal with this as it is taken care by compilers and various other toolchain components.
 
@@ -159,7 +159,7 @@ In assembly, the caller allocates stack space for the 32-byte `3d_point`, passes
 
 ## 2. Exception and Interrupt Handling
 
-We have sort of covered this in our earlier post when we talked at length on [Interrput handlining](https://pyjamabrah.com/posts/arm64-irq-handling/). But, let's revisit them briefly here for the sake of completing the overall picture.
+We have sort of covered this in our earlier post when we talked at length on [Interrput handlining](https://pyjamacafe.com/posts/arm64-irq-handling/). But, let's revisit them briefly here for the sake of completing the overall picture.
 
 When an exception or interrupt hits, the processor needs to save the current state so it can pick up where it left off after handling the event. This is where GPRs play a critical role, but there’s a catch: not all registers are automatically saved.
 

@@ -26,7 +26,7 @@ Hello There!
 
 Let's continue on our journey of understanding a mammoth that is the ARM64 architecuture.
 
-In the [previous article](https://pyjamabrah.com/posts/arm64-el0-el1-switching/), we went through the flow involved in switching from `EL0` to `EL1`. In this one, we will cover the handling of interrupts by an ARM-A Class core involving the interactions with GIC (Generic Interrupt Controller) and how does the flow look in case of an SMP system.
+In the [previous article](https://pyjamacafe.com/posts/arm64-el0-el1-switching/), we went through the flow involved in switching from `EL0` to `EL1`. In this one, we will cover the handling of interrupts by an ARM-A Class core involving the interactions with GIC (Generic Interrupt Controller) and how does the flow look in case of an SMP system.
 
 Bird's eye view of the entire flow would be (we will expand on each of the item in this post):
 
