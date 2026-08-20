@@ -84,11 +84,11 @@ $$
 E_k + e^{\frac{-j2\pi k}{N}} \cdot O_k \ \ \ \ \text{for k} = 0, 1, 2,...,N/2-1
 $$
 
-This can compute frequency bins from $0 \ to \ \frac{n}{2}-1$.
+This can compute frequency bins from $0 \to \frac{n}{2}-1$.
 
-For $\frac{N}{2} \ to \ N$, we can exploit periodicity of the complex exponential.
+For $\frac{N}{2} \to N$, we can exploit periodicity of the complex exponential.
 
-This --- $e^{\frac{-j2\pi kn}{N}}$ is actually our twiddle factor, if we go from $0 \ to \ N$. But if we go from $N \ to \ 0$, we can write it like this --- $e^{\frac{-j2\pi k(N-n)}{N}}$
+This --- $e^{\frac{-j2\pi kn}{N}}$ is actually our twiddle factor, if we go from $0 \to N$. But if we go from $N \to 0$, we can write it like this --- $e^{\frac{-j2\pi k(N-n)}{N}}$
 
 Lets normalize this reverse twiddle factor:
 $$
