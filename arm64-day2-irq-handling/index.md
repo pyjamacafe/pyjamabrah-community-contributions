@@ -41,7 +41,7 @@ Bird's eye view of the entire flow would be (we will expand on each of the item 
 
 Imagine our ARMv8-A core is diligently crunching numbers at EL0, the lowest exception level, where user applications typically run (may be calcuting the value of Pi to a trillionth decimal). Suddenly, an external interrupt (IRQ) signal asserts. What happens?
 
-### 1. Vector Table
+## Vector Table
 
 When an interrupt occurs, the ARM processor performs a semi hardware-assisted exception handling (What do I mean by semi-assisted, we will find answer real soon).
 
@@ -89,7 +89,7 @@ In our above snippet, when an IRQ occurs at EL0, control is transferred to the `
 
 NOTE: The design aspect of ARM64 vector table is also fascinating. At first glance, it might seem like its riddled with a lot of redundunt entries. But, each of them serve a purpose. We will cover each of them in detail in one of the next articles.
 
-### 2. Are Interrupts Masked by default in an interrupt context?
+## Are Interrupts Masked by default in an interrupt context?
 
 To answer it shortly, **Yes, when an exception is taken, the hardware automatically masks asynchronous exceptions (IRQs and FIQs) at the target exception level.**
 
@@ -99,7 +99,7 @@ Think of it like this: The hardware gives us a brief "breather" to get our act t
 
 We can re-enable interrupts within our handler if we intend to support nested interrupts, but let's revist that topic a bit later. For now, we will keep our IRQs and FIQs masked.
 
-### 3. GIC and CPU Interface's Interaction
+## GIC and CPU Interface's Interaction
 
 The Generic Interrupt Controller (GIC) is the unsung hero of interrupt management in ARM-based systems. It's a separate hardware block responsible for aggregating interrupt sources, prioritizing them, and presenting them to the ARM core. The CPU interface is the part of the GIC that directly communicates with the ARM processor.
 
@@ -111,7 +111,7 @@ Macro level view of its working:
 
 To identify which interrupt has occurred and to acknowledge it, our CPU will interact with the GIC CPU Interface registers. These registers are memory-mapped, meaning we access them by reading from and writing to specific memory addresses.
 
-### 4. Interrupt handling flow
+## Interrupt handling flow
 
 Let's looks at a typical generic interrupt handler at EL1. I would also encourage folks to take a look at other kernel implementation and compare how there handling logic is written.
 
@@ -126,7 +126,7 @@ Let's looks at a typical generic interrupt handler at EL1. I would also encourag
 8. **Restore Context:** Restore the saved state of the interrupted EL0 program.
 9. **Return from Exception:** Use the `eret` instruction to return to EL0 and resume the interrupted program.
 
-### 5. GIC - Interrupt \#ID finding and acknowledgement
+## GIC - Interrupt \#ID finding and acknowledgement
 
 As per `Step-2` and `Step-3` we would want to identify the interrupt and acknowledge it using GIC CPU Interface registers. These are:
 
@@ -162,7 +162,7 @@ handle_timer_irq:
 
 **NOTE:** I'd want to remind ourselves that reading `ICC_IAR1_EL1` both retrieves the INTID _and_ implicitly acknowledges the interrupt. We don't need a separate write to acknowledge. That's a clever design if you ask me.
 
-### 6. GIC - Signalling End of Interrupt
+## GIC - Signalling End of Interrupt
 
 After we've handled the specific interrupt, we must inform the GIC that we're done. This is achieved by writing the same INTID we received from `ICC_IAR1_EL1` back to `ICC_EOIR1_EL1`.
 
@@ -177,7 +177,7 @@ signal_eoi_to_gic:
 
 **Thinking time:** Why do we need `ICC_EOIR1_EL1` when `ICC_IAR1_EL1` already acknowledges the interrupt? The `ICC_IAR1_EL1` acknowledges the _CPU's reception_ of the interrupt, stopping the GIC from sending it again to the CPU interface. `ICC_EOIR1_EL1`, on the other hand, tells the GIC to clear the _pending state_ of the interrupt within the GIC Distributor. This allows other interrupts of lower priority (that might have been masked by the current interrupt's priority) to now be forwarded. Without signaling EOI, the GIC might think the interrupt is still active and prevent other interrupts from reaching the CPU.
 
-### 7. Putting everything together
+## Putting everything together
 
 Let's put all these pieces together into a more complete generic IRQ handler.
 

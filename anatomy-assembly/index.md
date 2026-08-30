@@ -83,7 +83,7 @@ RISC-V has a reduced instruction set, meaning it keeps things simple with a few 
 1. **U-type**: Upper immediate (large constants).
 1. **J-type**: Jump instructions (unconditional jumps).
 
-# Code Examples
+## Code Examples
 
 Now, let us see this in action with examples. Examples of RISC-V Assembly Code
 
@@ -232,7 +232,7 @@ loop:
 1. Uses registers `x1`, `x2`, `x3`.
 1. Combines I-type (`addi`), R-type (`add`), and B-type (`bne`).
 
-# Things to remember about RISC-V Assembly
+## Things to remember about RISC-V Assembly
 
 1. **Fixed-length instructions**: All are 32 bits, making decoding simple.
 1. **Load/store architecture**: Only lw and sw access memory; arithmetic uses registers.

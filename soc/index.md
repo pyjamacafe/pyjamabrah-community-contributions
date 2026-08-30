@@ -20,7 +20,7 @@ A System on Chip (SoC) is an integrated circuit that combines multiple component
 
 Unlike traditional setups where the CPU, memory, and peripherals are separate and connected via a motherboard, an SoC integrates these into a compact, power-efficient package.
 
-# Key Components of an SoC
+## Key Components of an SoC
 - **CPU (Central Processing Unit):** The core processing unit, often a multi-core processor like the ARM Cortex-A series in AArch64.
 - **GPU (Graphics Processing Unit):** Manages graphics rendering, essential for systems with displays.
 - **Memory:** Includes on-chip RAM, caches, or interfaces to external memory like DDR RAM.
@@ -32,25 +32,25 @@ SoCs are ideal for devices like smartphones, IoT gadgets, and the Raspberry Pi d
 
 As an example, the Raspberry Pi 4’s Broadcom BCM2711 SoC integrates a quad-core ARM Cortex-A72 CPU, a VideoCore VI GPU, and various peripherals, tailored for a single-board computer.
 
-# AArch64 Architecture and Its Relevance
+## AArch64 Architecture and Its Relevance
 
 AArch64 is the 64-bit execution state of the ARMv8-A architecture, widely used in embedded systems, servers, and mobile devices for its efficiency and scalability.
 
-## Key Features of AArch64
+### Key Features of AArch64
 - **64-bit Registers:** 31 general-purpose registers (X0-X30), each 64 bits wide, plus a stack pointer (SP) and program counter (PC). There are also several Special Function and Configuration registers.
 - **Instruction Set:** Utilizes a RISC design for simplicity and power efficiency.
 - **Memory Addressing:** Supports up to 48-bit virtual addresses, extendable to 52-bit in some cases.
 - **Exception Levels (EL0-EL3):** Defines privilege levels for user applications (EL0), OS kernel (EL1), hypervisor (EL2), and secure monitor (EL3).
 - **Advanced SIMD (NEON):** Enables parallel processing for multimedia and signal processing.
 
-## Relevance to Embedded Systems
+### Relevance to Embedded Systems
 - Power efficiency suits battery-powered devices.
 - Scalability supports low-end IoT to high-performance systems like the Raspberry Pi 4.
 - Open ecosystem with robust toolchain support (e.g., GCC, LLVM).
 
 > The BCM2711 SoC uses four Cortex-A72 cores in AArch64 mode, making it an excellent platform for exploring this architecture.
 
-# General Boot Sequence in Embedded Systems
+## General Boot Sequence in Embedded Systems
 
 The boot sequence of an embedded system with an SoC is the process from power-on to handing control to an operating system or application.
 1. **Power-On Reset (POR):** The SoC’s reset circuitry initializes the CPU and components to a known state, stabilizing clocks and voltage regulators.
@@ -78,7 +78,7 @@ Peripherals are controlled by reading/writing to specific memory addresses. For 
 
 > MMIO requires precise register knowledge from the datasheet. Incorrect writes can crash the system, making datasheet study essential for bare-metal coding.
 
-# Peripherals extend SoC functionality
+## Peripherals extend SoC functionality
 - **GPIO (General Purpose Input/Output):** Configurable pins for interfacing with LEDs, buttons, or sensors, controlled via MMIO registers. The Raspberry Pi 4 has 28 GPIO pins on its 40-pin header.
 - **UART (Universal Asynchronous Receiver/Transmitter):** A serial communication interface for debugging or device interaction, mapped at 0x3F201000 on the Raspberry Pi 4.
 - **Interrupts:** Hardware signals that pause the CPU for urgent events, managed via an interrupt controller (e.g., GIC-400 in AArch64 SoCs).

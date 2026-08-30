@@ -23,7 +23,7 @@ GDB, OpenOCD, JTAG, SWD etc are terms often thrown around when it comes to debug
 
 <!--more-->
 
-# On Debugging an Embedded System
+## On Debugging an Embedded System
 
 This series is going to focus on whats, whys and hows of debugging embedded systems world, particularly those based on ARM-A based architectures.
 
@@ -36,7 +36,7 @@ We might have come across terms like GDB, OpenOCD, JTAG, SWD. If I am able to do
 
 ***
 
-### Why is Debugging, Anyway?
+## Why is Debugging, Anyway?
 
 Before we jump the gun, let's convince ourselves why debugging is even required.
 

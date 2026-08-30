@@ -209,7 +209,7 @@ return_to_el0:
 
 The `eret` instruction restores PC from ELR_EL1 and state from SPSR_EL1.
 
-# Complete Example
+## Complete Example
 
 Let's piece everything together:
 

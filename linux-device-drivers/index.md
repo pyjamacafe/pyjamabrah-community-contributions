@@ -24,7 +24,7 @@ I come from a background in microcontrollers and firmware development and became
 
 The kernel is designed to be generic and provide general operating system facilities such as resource, power, and process management, among others. Kernel developers don’t necessarily know what hardware (CPU and peripherals) the kernel will run on. For these reasons, it cannot directly boot on specific hardware.
 
-# 1. Programmer's Models
+## Programmer's Models
 
 Programmer's models are abstractions of the hardware that programmers can use to control it. These abstractions hide circuit-level details and provide interfaces, typically registers, that the programmer can read from and write to.
 
@@ -40,7 +40,7 @@ You don’t need to master these models, but you should be aware of them. Whiche
 
 > I recommend working with ARM64 (AArch64)-based CPUs. They are widely used in servers, personal devices (phones, tablets, watches, etc.), automobiles, and more.
 
-# 2. Bootloaders
+## Bootloaders
 
 The Linux kernel doesn’t directly boot on the CPU. Instead, it is loaded by firmware known as the `bootloader`.
 
@@ -48,7 +48,7 @@ There are typically multiple stages in the boot process, and everything prior to
 
 What do I mean by specific functionality? Well, the ROM code, for example, usually comes preloaded from the factory and is typically responsible for powering on critical parts of the system. After that, it transfers control (by directing the CPU to the code of another bootloader) to a subsequent bootloader, which may perform security checks, install secure firmware (such as trusted execution environments), turn on and train the DRAM, and so on. This bootloader usually transfers control to yet another bootloader or locates and loads the kernel.
 
-# 3. Bare-metal Boot
+## Bare-metal Boot
 
 Being able to boot a CPU from scratch enables one to reason about the functionality of a bootloader. Additionally, it is a good way to learn about the CPU and all the models listed in the previous section.
 
@@ -60,7 +60,7 @@ The second thing I do is toggle a GPIO (General Purpose Input/Output) pin. This 
 1. Build tools, Linker Scripts and Makefiles.
 1. Reading SoC (System On Chip) datasheet [^1].
 
-# 4. The Device Tree
+## The Device Tree
 
 I noted above that the kernel is unaware of the hardware (SoC) it will be booted on. The kernel requires certain hardware blocks to be functional for it to operate correctly. For example, the system timer is required to enable periodic switching between processes.
 
@@ -74,7 +74,7 @@ The next question is: How does the kernel obtain the device tree binary object t
 
 The **dtbo** file is placed at a specific location in memory, and its address is written into a designated CPU register before control is handed over to the kernel image. Once the kernel image begins to execute, it reads the hardware configuration and determines which drivers need to be loaded, among other things.
 
-# 5. Driver for the GPIO block
+## Driver for the GPIO block
 
 The device tree encodes, along with the details of the hardware, the drivers that the kernel can use to manage the device. These drivers are compiled as part of the kernel image. Where is the device driver source, you ask? The `kernel code source`.
 
@@ -84,19 +84,19 @@ The success criterion for this could be that the LED needs to turn on or off bas
 
 This truly is the ultimate project one can undertake to learn device drivers the right way. In my opinion, the best platform for this is any of the single-board computers (I prefer the Raspberry Pi).
 
-# 6. Enabling Interrupts
+## Enabling Interrupts
 
 Interrupts are a very common occurrence in the device driver world, and being able to configure a GPIO as an interrupt source and manage it with the driver is the final know-how you’ll need before you can claim to be a device driver developer. Consider extending the driver in the section above to account for a GPIO as an interrupt source.
 
 I like to program a GPIO as an interrupt source and then generate the interrupts by pressing the button attached to it.
 
-# 7. Master Kernel Facilities
+## Master Kernel Facilities
 
 This is what vanilla device driver developers use right from the start. Kernel facilities are frameworks and helpful features that the kernel provides to simplify device driver development. Things like `queues`, `work queues`, `timer queues`, `mutexes`, `semaphores`, etc., are examples of kernel facilities.
 
 Knowing how to use these will not only help you make the raw driver more robust and production-ready but also enhance your toolkit of skills.
 
-# Final Thoughts
+## Final Thoughts
 
 To me, a true kernel driver developer can reason very clearly from the boot process all the way to how the driver controls the hardware. In my view, the seven steps above are how one can achieve that level of proficiency.
 

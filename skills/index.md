@@ -26,7 +26,7 @@ If we skip the domain expertise, there are basics that can enable one to contrib
 
 > Learn the vocabulary of the field so the seniors can talk to you and care to teach you.
 
-# Learn C
+## Learn C
 
 Learn the C language. This language is not dead by any stretch of the imagination! Most processors in an embedded system are programmed in C, the Linux kernel is also written in C, CPython is written in C, lower-level standard libraries are written in C, and so on… C language represents the hardware really well and most engineers default to it as the language of choice.
 
@@ -65,7 +65,7 @@ You don’t have to buy any hardware or a CPU just to learn the C language. Ther
 
 This brings us to the second thing you should know - a 32-bit CPU!
 
-# 32-bit CPU, Preferably ARM or RISC-V
+## 32-bit CPU, Preferably ARM or RISC-V
 
 You can program an Arduino? Sorry, that doesn’t count and isn’t going to cut in! Any serious embedded engineer knows that they should know a 32-bit processor. How it works and how to boot it cold! You have to know or be interested in knowing the Instruction Set Architecture (ISA) of a 32-bit CPU. At the very least!
 
@@ -94,7 +94,7 @@ Trying to learn the CPU will only reinforce your C and assembly language abiliti
 
 ![](/posts/skills/4.png "fig 4. Running code in QEMU and debugging it using GDB.")
 
-# The Toolchain!
+## The Toolchain!
 
 To develop software for RISC-V CPUs, you typically use an embedded software toolchain. An embedded software toolchain is a set of software development tools that aid in writing, compiling, and debugging software for embedded systems or specific processor architectures. The components of an embedded software toolchain for RISC-V CPUs include:
 
@@ -109,7 +109,7 @@ There are also many other utilities but the ones listed above are important ones
 
 We talked about the toolchain with respect to the RISC-V CPUs, but such a toolchain will be available for any processor that you have to work with. We will explore the various utilities in the toolchain in future posts.
 
-# Why does this work well?
+## Why does this work well?
 
 Being comfortable with the above three will enable exploring Operating systems and device driver programming which is what most embedded software engineers do. Experts will argue that this is not enough. And I would agree, but for someone to start their career and be a useful/productive member of the team these are more than enough. Anyone who can understand C, knows a little bit of CPU internals, and can use the toolchain effectively is a good hire and a productive teammate.
 

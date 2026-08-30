@@ -18,7 +18,7 @@ Git and Gerrit are pivotal tools in the software development industry, each serv
 
 <!--more-->
 
-# Git: The Backbone of Version Control
+## Git: The Backbone of Version Control
 
 ![](git.png)
 
@@ -32,7 +32,7 @@ Git is a distributed version control system (VCS) that has become the de facto s
 
 Git's flexibility, performance, and ubiquity make it the foundation of modern software development. Without it, managing complex, collaborative projects would be chaotic and slow.
 
-# Gerrit: Elevating Code Quality and Governance
+## Gerrit: Elevating Code Quality and Governance
 
 ![](https://www.gerritcodereview.com/images/sbs.png)
 
@@ -44,7 +44,7 @@ Gerrit is a web-based code review tool built on top of Git, designed to enforce 
 1. **Knowledge Sharing**: The review process exposes team members to the codebase, fostering shared ownership. A newcomer can learn from inline comments on a complex algorithm, while veterans ensure consistency. This is especially valuable in distributed teams where face-to-face mentoring isn't possible.
 1. **Scalability for Complex Projects**: Gerrit was born from the need to manage massive, interdependent codebases like Android. Its staging area for pending changes and integration with CI systems (e.g., Jenkins) ensures that only tested, reviewed code lands in production. This reduces regressions in systems with millions of lines of code.
 
-# Industry Context and Synergy
+## Industry Context and Synergy
 
 1. Git is universal-startups, enterprises, and open-source communities all rely on it. Gerrit, however, is more niche, favored by organizations with strict governance needs (e.g., Google, Qualcomm) or large, collaborative projects. Smaller teams might opt for GitHub's pull requests instead, which are simpler but less rigid.
 1. Git provides the raw power of version control; Gerrit adds discipline. Together, they create a pipeline where Git tracks every change, and Gerrit polishes those changes into production-ready code. For instance, a telecom company might use Git to manage a sprawling firmware repo, with Gerrit ensuring each update passes rigorous review.

@@ -43,7 +43,7 @@ For example, in a smart thermostat, a sensor measures room temperature, the proc
 
 ---
 
-# Processing
+## Processing
 
 Embedded systems process data through two primary approaches:
 
@@ -62,7 +62,7 @@ As an example, a digital system might sample a temperature sensor’s voltage, p
 
 ---
 
-# Key Components
+## Key Components
 
 Embedded systems rely on several core components to function effectively, each playing a distinct role in sensing, processing, and acting on environmental data.
 
@@ -82,11 +82,11 @@ Together, these components enable embedded systems to sense environmental change
 
 ---
 
-# Learning Embedded Systems
+## Learning Embedded Systems
 
 Mastering these concepts, from the programmer’s model to communication protocols, equips developers to build efficient and reliable embedded systems for a wide range of applications.
 
-## Programmer’s Models
+### Programmer’s Models
 
 At the core is the programmer’s model, which serves as a critical abstraction for understanding how to program a CPU, much like knowing how a wall socket delivers electricity. This model encompasses the instruction set, which defines the commands the CPU can execute, configuration registers that control features like interrupts, and data registers that store information during processing. To grasp this model, regularly consult CPU manuals from manufacturers like ARM or Intel, focusing on the table of contents and key sections to build familiarity over time.
 
@@ -96,7 +96,7 @@ The debug model covers tools and techniques for troubleshooting CPU operations, 
 
 The memory model describes how the CPU interacts with various memory types, from the fastest registers to slower caches, DRAM, SSDs, and hard disks. Techniques like caching help bridge the speed gap between the CPU and memory, boosting performance by storing frequently accessed data closer to the processor.
 
-## Languages
+### Languages
 
 Programming embedded systems primarily relies on the C language, which dominates firmware development due to its efficiency and maintainability.
 
@@ -106,7 +106,7 @@ Emerging languages like C++ and Rust are gaining traction but remain less common
 
 A solid understanding of the toolchain, including compilers, assemblers, linkers, and debuggers, is also essential, as these tools transform code into executable programs and help identify errors during development.
 
-## Operating Systems
+### Operating Systems
 
 Operating systems play a significant role in enabling a single CPU to juggle multiple tasks, such as sensing temperature, updating a display, and triggering a beep.
 
@@ -114,7 +114,7 @@ The scheduler, a core component of an operating system, manages these tasks by s
 
 FreeRTOS, a popular real-time operating system, exemplifies this by being adaptable to new CPUs, making it a valuable tool for embedded developers.
 
-## Communication Protocols
+### Communication Protocols
 
 Communication protocols are another critical area, as they enable sensors and actuators to connect with the CPU. Starting with simpler protocols like UART, I2C, and SPI provides a foundation before tackling more complex ones like USB or PCIe.
 
@@ -122,14 +122,14 @@ These protocols define schemes for data transmission, including start and stop s
 
 ---
 
-# Projects
+## Projects
 
 Exploring embedded systems through practical projects provides hands-on experience that deepens understanding of their core concepts. These projects bridge theoretical knowledge with practical application, preparing you for real-world challenges in embedded systems design.
 
-## Write a Scheduler
+### Write a Scheduler
 
 One effective project involves writing a scheduler for a CPU, such as an ARM Cortex-M, to manage multiple tasks. This requires programming in assembly and C while applying knowledge of the CPU’s programmer’s model and exception model to handle task switching and interrupts. By building a scheduler, you gain insight into operating system fundamentals and learn how CPUs execute and prioritize tasks, offering a practical grasp of system-level operations.
 
-## Implement a Digital Filter
+### Implement a Digital Filter
 
 Another valuable project focuses on audio processing by interfacing a microphone and speaker with a CPU to implement a signal processing algorithm, such as filtering drum noise to isolate guitar sounds. This task demands managing large volumes of data in real time and configuring communication buses like I2C or SPI to connect the components. Through this project, you develop skills in handling real-time constraints, processing continuous data streams, and integrating hardware with software, all of which are critical for embedded systems development.

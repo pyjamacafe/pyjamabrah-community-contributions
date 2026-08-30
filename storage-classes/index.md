@@ -80,7 +80,7 @@ int globalVar = 42;
 
 
 
-# Hands on Example
+## Hands on Example
 Here's an example code snippet demonstrating all four storage classes in action:
 
 ```c

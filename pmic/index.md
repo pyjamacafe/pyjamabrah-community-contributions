@@ -24,28 +24,28 @@ A PMIC integrates multiple power management functions into a single chip, optimi
 
 ![](cover.jpg)
 
-# Voltage Regulation
+## Voltage Regulation
 
 PMICs convert input voltages from a DC power supply (e.g., USB or wall adapter) or a battery into stable, regulated voltages required by different components, such as processors, memory, or sensors. This is achieved through:
 - `DC-DC Converters`: Buck converters step down voltage, while boost converters step it up, ensuring efficient power delivery.
 - `Low-Dropout Regulators (LDOs)`: Provide precise, low-noise voltage for sensitive components.
 
-# Battery Management
+## Battery Management
 
 PMICs manage battery charging and discharging. They regulate the charging process to ensure safety and longevity, supporting protocols like constant current/constant voltage (CC/CV) charging for lithium-ion batteries. Key features include:
  - Overcharge and over-discharge protection.
  - Thermal regulation to prevent overheating.
  - Battery status monitoring (e.g., state of charge).
 
-# Power Sequencing
+## Power Sequencing
 
 Many electronic systems require components to power on or off in a specific order to avoid damage or instability. PMICs ensure proper sequencing by controlling the timing of voltage rails.
 
-# Power Path Management
+## Power Path Management
 
 PMICs intelligently switch between power sources (e.g., battery or external DC supply) to ensure uninterrupted operation. For example, when a device is plugged in, the PMIC may prioritize the external supply while simultaneously charging the battery.
 
-# Additional Features
+## Additional Features
    Modern PMICs often include auxiliary functions like:
    - Power monitoring and reporting.
    - Sleep or low-power modes for energy conservation.
@@ -53,7 +53,7 @@ PMICs intelligently switch between power sources (e.g., battery or external DC s
 
 The PMIC achieves these functions through a combination of analog and digital circuits, including switching regulators, control logic, and communication interfaces (e.g., I2C or SPI) for configuration and monitoring.
 
-# Applications of PMICs
+## Applications of PMICs
 
 ![](npmPowerUp.png "The nPM1300 board connected/controlled via the npmPowerUp companion app.")
 
@@ -64,7 +64,7 @@ PMICs are ubiquitous in battery-powered and energy-conscious devices, including:
 - **Medical Devices**: Portable diagnostic tools and implantable devices use PMICs for reliable power delivery and battery management.
 - **Industrial Equipment**: PMICs ensure stable power in robotics, automation systems, and other industrial applications.
 
-# Importance of PMICs
+## Importance of PMICs
 PMICs play a pivotal role in modern electronics for several reasons:
 1. **Energy Efficiency**: By optimizing power delivery and reducing losses, PMICs extend battery life and lower energy consumption, which is critical for portable devices and sustainable technology.
 1. **System Reliability**: Precise voltage regulation and protection mechanisms prevent damage to sensitive components, enhancing device durability and safety.

@@ -20,9 +20,9 @@ categories:
 ABI and Procedure call standard are backbone to safe-guard compatibility and inter-operability. Let's see how and why.
 
 <!--more-->
-# ARMv8-A Procedure Call standard
+## ARMv8-A Procedure Call standard
 
-## What Are General-Purpose Registers?
+### What Are General-Purpose Registers?
 
 Previous articles, we have solely dedicated ourselves in the study of [exception levels](https://pyjamacafe.com/posts/arm64-exception-levels/) and [interrupt handling](https://pyjamacafe.com/posts/arm64-irq-handling/).
 
@@ -38,7 +38,7 @@ The breif outline will be:
   * Exception and Interrupt Handling
   * Context Switch Handling
 
-## A Brief about GPRs
+### A Brief about GPRs
 
 In the ARMv8-A architecture, general-purpose registers (GPRs) are the primary and often the fatest data stores of the CPUs. They’re like the sticky notes where they're used in storing data, passing arguments and moving data around. We will go over the examples in detail.
 
@@ -52,7 +52,7 @@ Oh, the **zero register** (XZR in 64-bit, WZR in 32-bit). It’s not one of the 
 
 Why did the GPRs have to go to therapy? They seemed to have Dual personality disorder after being used as both X0 and W0 in the same program :)
 
-## 1. ARM AArch64 ABI and Function Calls
+## ARM AArch64 ABI and Function Calls
 
 The ABI is like the rulebook for how software talks to the hardware. In AArch64, the GPRs are assigned specific roles during function calls to make things efficient and consistent.
 
@@ -157,7 +157,7 @@ In assembly, the caller allocates stack space for the 32-byte `3d_point`, passes
 
 **callee-saved vs. caller-saved** distinction. If we’re calling a function, we need to assume X0–X17 might get trashed, so we'll save them if we need their values later. On the other hand, if our function uses X19–X28, we’re responsible to save and restore them.
 
-## 2. Exception and Interrupt Handling
+## Exception and Interrupt Handling
 
 We have sort of covered this in our earlier post when we talked at length on [Interrput handlining](https://pyjamacafe.com/posts/arm64-irq-handling/). But, let's revisit them briefly here for the sake of completing the overall picture.
 
@@ -197,7 +197,7 @@ exception_handler:
 
 A common oversight is not saving **X30 (LR)** in the exception handler. Since X30 holds the return address for function calls, an interrupt handler might overwrite it if it calls another function.
 
-### 3. Context Switching and GPRs
+## Context Switching and GPRs
 
 While we are trying to be pedantic, let's also quickly go over the context switch code and what all needs to stored and restored there.
 

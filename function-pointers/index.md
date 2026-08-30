@@ -51,13 +51,13 @@ Hopefully, you are convinced how a function pointer works. Now let’s look at s
 
 ![](/posts/function-pointers/3.png "fig 3. Annotated screenshot of the locally run example.")
 
-# The Syntax
+## The Syntax
 
 The general syntax is `return type (* function pointer name)(parameter list)`. The function/code being pointed to should have the same return type and parameters. For example, the snippets below add has the same return types and parameter list as fn.
 
 ![](/posts/function-pointers/4.jpg "fig 4. The function pointer declaration syntax.")
 
-## Without 'typedef'
+### Without 'typedef'
 
 Using `typedef` is not strictly required, if we decide not to use it, the function pointer variable declaration will be as in the code below. Notice how the syntax is long and hard to read.
 
@@ -77,7 +77,7 @@ int main() {
 
 ![](/posts/function-pointers/5.png "fig 6. Assigning and calling a function pointer.")
 
-# When to use function pointers?
+## When to use function pointers?
 
 > The answer is when the bottom abstraction layer depends on the one on top!
 
@@ -93,7 +93,7 @@ If this looks right, the next question we should ask is - **what happens if a li
 
 > When a function takes as a parameter a function pointer, the function pointer is called the Callback function.
 
-# Example: Interrupt Handlers
+### Example: Interrupt Handlers
 
 Such design philosophy is used in Event Driven programs and message passing. In the world of embedded systems the best example is that of - Interrupt handlers in the device drivers.
 
