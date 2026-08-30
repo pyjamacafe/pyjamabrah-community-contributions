@@ -13,7 +13,6 @@ categories:
   - "announcements"
 
 ---
-![](/posts/sunsetting-library-access/sunset.jpg)
 
 The [**Library Access**](/library) is a collection of courses focused on lowering the barrier to learning and mastering Embedded Systems software engineering. While everything is already available for free on the internet, it is scattered. With Library Access, our intention was to explain that information through a practical lens and offer it all organized under a single platform.
 
@@ -25,6 +24,8 @@ As it stands now — there are more than 25 learning tracks in the Library.
 
 > [!NOTE]
 > We are sunsetting the [Library Access](/library) and will stop offering it by **Nov 1, 2026**. There will be no new subscriptions or renewals allowed.
+
+{{< youtube YK3f9KEKJo4 >}}
 
 In a recent interaction with community members on our [**WhatsApp channel**](https://whatsapp.com/channel/0029VaLHkWT6buMPULyhxd1Q), we had two important discoveries:
 1. People love the courses ❤️ and content delivery 🙌.
